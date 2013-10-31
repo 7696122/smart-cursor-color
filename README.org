@@ -1,1 +1,0 @@
-* Dynamic Cursor Color Changer [[https://https://travis-ci.org/7696122/dynamic-cursor-color-changer.png?branch%3Dmaster][http://travis-ci.org/7696122/dynamic-cursor-color-changer]]
