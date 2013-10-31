@@ -5,11 +5,11 @@
 ;; Author: 7696122
 ;; Maintainer: 
 ;; Created: Thu Oct 31 21:33:34 2013 (+0900)
-;; Version: 
+;; Version: 0.0.1
 ;; Package-Requires: ()
-;; Last-Updated: Thu Oct 31 21:56:48 2013 (+0900)
+;; Last-Updated: Thu Oct 31 22:39:05 2013 (+0900)
 ;;           By: 7696122
-;;     Update #: 14
+;;     Update #: 15
 ;; URL: 
 ;; Doc URL: 
 ;; Keywords: 
