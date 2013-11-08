@@ -7,9 +7,9 @@
 ;; Created: Thu Oct 31 21:33:34 2013 (+0900)
 ;; Version: 0.0.1
 ;; Package-Requires: ()
-;; Last-Updated: Thu Oct 31 22:39:05 2013 (+0900)
+;; Last-Updated: Thu Nov  7 23:12:14 2013 (+0900)
 ;;           By: 7696122
-;;     Update #: 15
+;;     Update #: 91
 ;; URL: 
 ;; Doc URL: 
 ;; Keywords: 
@@ -52,18 +52,10 @@
 
 (require 'eyedropper)
 
-(defvar current-cursor-color nil
-  "previous cursor color.")
-
 (defun set-dynamic-cursor-color ()
   "Set cursor color dynamically."
-  (let ((fcolor (eyedrop-foreground-at-point)))
-    (if fcolor
-        (unless (eq current-cursor-color fcolor)
-          (let ((bcolor (eyedrop-background-at-point)))
-            (unless (eq fcolor bcolor)
-              (setq current-cursor-color fcolor)
-              (set-cursor-color fcolor)))))))
+  (unless (eq eyedrop-last-picked-color (pick-foreground-color))
+    (set-cursor-color eyedrop-last-picked-color)))
 
 ;;;###autoload
 (defun dynamic-cursor-color-mode-on ()
@@ -80,7 +72,6 @@
   "Turn off dynamic-cursor-color-mode."
   (interactive)
   (remove-hook 'post-command-hook 'set-dynamic-cursor-color))
-
 
 (provide 'dynamic-cursor-color-changer)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
