@@ -7,9 +7,9 @@
 ;; Created: Thu Oct 31 21:33:34 2013 (+0900)
 ;; Version: 0.0.1
 ;; Package-Requires: ()
-;; Last-Updated: Wed Nov 20 10:34:26 2013 (+0900)
+;; Last-Updated: Wed Nov 20 22:33:52 2013 (+0900)
 ;;           By: 7696122
-;;     Update #: 255
+;;     Update #: 261
 ;; URL: https://github.com/7696122/dynamic-cursor-color-changer
 ;; Doc URL: 
 ;; Keywords: cursor, color, face
@@ -64,10 +64,9 @@
         (progn
           (unless cursor-color
             (setq cursor-color (face-foreground 'cursor)))
-          (if cursor-color
-              (progn
-                (setq current-cursor-color cursor-color)
-                (set-cursor-color cursor-color))))))))
+          (unless (eq cursor-color current-cursor-color)
+            (setq current-cursor-color cursor-color)
+            (set-cursor-color cursor-color)))))))
 
 ;;;###autoload
 (defun dynamic-cursor-color-mode-on ()
