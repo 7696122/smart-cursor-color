@@ -1,19 +1,19 @@
-;;; dynamic-cursor-color-changer.el --- change cursor-color dynamically.
+;;; dynamic-cursor-color-changer.el --- Change cursor color dynamically.
 ;; 
 ;; Filename: dynamic-cursor-color-changer.el
-;; Description: 
+;; Description: Change cursor color dynamically at cursor or pointer.
 ;; Author: 7696122
-;; Maintainer: 
+;; Maintainer: 7696122
 ;; Created: Thu Oct 31 21:33:34 2013 (+0900)
 ;; Version: 0.0.1
 ;; Package-Requires: ()
-;; Last-Updated: Thu Nov  7 23:12:14 2013 (+0900)
+;; Last-Updated: Wed Nov 20 10:34:26 2013 (+0900)
 ;;           By: 7696122
-;;     Update #: 91
-;; URL: 
+;;     Update #: 255
+;; URL: https://github.com/7696122/dynamic-cursor-color-changer
 ;; Doc URL: 
-;; Keywords: 
-;; Compatibility: 
+;; Keywords: cursor, color, face
+;; Compatibility: GNU Emacs: 20.x, 21.x, 22.x, 23.x, 24.x
 ;; 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 
@@ -50,21 +50,29 @@
 ;; 
 ;;; Code:
 
-(require 'eyedropper)
+(defvar cursor-color (face-foreground 'cursor) "cursor face's foreground color.")
+(defvar current-cursor-color cursor-color "current cursor color.")
 
 (defun set-dynamic-cursor-color ()
   "Set cursor color dynamically."
-  (unless (eq eyedrop-last-picked-color (pick-foreground-color))
-    (set-cursor-color eyedrop-last-picked-color)))
+  (let ((c (foreground-color-at-point)))
+    (unless (eq c current-cursor-color)
+      (if c
+          (progn
+            (setq current-cursor-color c)
+            (set-cursor-color current-cursor-color))
+        (progn
+          (unless cursor-color
+            (setq cursor-color (face-foreground 'cursor)))
+          (if cursor-color
+              (progn
+                (setq current-cursor-color cursor-color)
+                (set-cursor-color cursor-color))))))))
 
 ;;;###autoload
 (defun dynamic-cursor-color-mode-on ()
   "Turn on dynamic-cursor-color-mode."
   (interactive)
-  (set-face-attribute 'cursor nil
-                      :foreground nil
-                      :background nil
-                      :inverse-video t)
   (add-hook 'post-command-hook 'set-dynamic-cursor-color))
 
 ;;;###autoload
