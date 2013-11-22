@@ -7,9 +7,9 @@
 ;; Created: Thu Oct 31 21:33:34 2013 (+0900)
 ;; Version: 0.0.1
 ;; Package-Requires: ()
-;; Last-Updated: Fri Nov 22 13:54:19 2013 (+0900)
+;; Last-Updated: Fri Nov 22 14:07:05 2013 (+0900)
 ;;           By: 7696122
-;;     Update #: 310
+;;     Update #: 322
 ;; URL: https://github.com/7696122/dynamic-cursor-color-mode
 ;; Doc URL:
 ;; Keywords: cursor, color, face
@@ -22,7 +22,7 @@
 ;; Quickstart
 ;;
 ;;       (require 'dynamic-cursor-color-mode)
-;;       (dynamic-cursor-color-mode-on)
+;;       (setq dynamic-cursor-color-mode +1)
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -53,13 +53,8 @@
 (defvar cursor-color (face-background 'default) "Cursor face's foreground color.")
 (defvar current-cursor-color cursor-color "Current cursor color.")
 
-(defcustom dynamic-cursor-color-mode nil
-  "Non-nil means change cursor color dynamically."
-  :group 'cursor
-  :type 'boolean)
-
-(defun set-dynamic-cursor-color ()
-  "Set cursor color dynamically."
+(defun change-dynamic-cursor-color ()
+  "Change cursor color dynamically."
   (let ((picked-color (foreground-color-at-point)))
     (unless (eq picked-color current-cursor-color)
       (if picked-color
@@ -70,10 +65,16 @@
           (setq current-cursor-color cursor-color)
           (set-cursor-color cursor-color))))))
 
-(if dynamic-cursor-color-mode
-    (add-hook 'after-init-hook
-              (lambda ()
-                (add-hook 'post-command-hook 'set-dynamic-cursor-color))))
+(define-minor-mode dynamic-cursor-color-mode
+  "Dynamically changed cursor color at point's color."
+  :global t
+  :group 'cursor
+  (if dynamic-cursor-color-mode
+      (progn
+        (add-hook 'pre-command-hook #'change-dynamic-cursor-color)
+        (add-hook 'post-command-hook #'change-dynamic-cursor-color))
+    (remove-hook 'pre-command-hook #'change-dynamic-cursor-color)
+    (remove-hook 'post-command-hook #'change-dynamic-cursor-color)))
 
 (provide 'dynamic-cursor-color-mode)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
