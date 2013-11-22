@@ -7,9 +7,9 @@
 ;; Created: Thu Oct 31 21:33:34 2013 (+0900)
 ;; Version: 0.0.1
 ;; Package-Requires: ()
-;; Last-Updated: Fri Nov 22 14:07:05 2013 (+0900)
+;; Last-Updated: Fri Nov 22 14:46:28 2013 (+0900)
 ;;           By: 7696122
-;;     Update #: 322
+;;     Update #: 332
 ;; URL: https://github.com/7696122/dynamic-cursor-color-mode
 ;; Doc URL:
 ;; Keywords: cursor, color, face
@@ -50,20 +50,19 @@
 ;;
 ;;; Code:
 
-(defvar cursor-color (face-background 'default) "Cursor face's foreground color.")
-(defvar current-cursor-color cursor-color "Current cursor color.")
+(defvar current-cursor-color nil "Current cursor color.")
 
 (defun change-dynamic-cursor-color ()
   "Change cursor color dynamically."
-  (let ((picked-color (foreground-color-at-point)))
-    (unless (eq picked-color current-cursor-color)
-      (if picked-color
-          (progn
-            (setq current-cursor-color picked-color)
-            (set-cursor-color current-cursor-color))
-        (unless (eq cursor-color current-cursor-color)
-          (setq current-cursor-color cursor-color)
-          (set-cursor-color cursor-color))))))
+  (let ((picked-color (foreground-color-at-point))
+        (foreground-color (face-foreground 'default)))
+    (if picked-color
+        (unless (eq picked-color current-cursor-color)
+          (setq current-cursor-color picked-color)
+          (set-cursor-color current-cursor-color))
+      (unless (eq foreground-color current-cursor-color)
+        (setq current-cursor-color foreground-color)
+        (set-cursor-color foreground-color)))))
 
 (define-minor-mode dynamic-cursor-color-mode
   "Dynamically changed cursor color at point's color."
