@@ -1,16 +1,16 @@
-;;; dynamic-cursor-color-changer.el --- Change cursor color dynamically.
+;;; dynamic-cursor-color-mode.el --- Change cursor color dynamically.
 ;;
-;; Filename: dynamic-cursor-color-changer.el
+;; Filename: dynamic-cursor-color-mode.el
 ;; Description: Change cursor color dynamically at cursor or pointer.
 ;; Author: 7696122
 ;; Maintainer: 7696122
 ;; Created: Thu Oct 31 21:33:34 2013 (+0900)
 ;; Version: 0.0.1
 ;; Package-Requires: ()
-;; Last-Updated: Fri Nov 22 13:51:11 2013 (+0900)
+;; Last-Updated: Fri Nov 22 13:54:19 2013 (+0900)
 ;;           By: 7696122
-;;     Update #: 309
-;; URL: https://github.com/7696122/dynamic-cursor-color-changer
+;;     Update #: 310
+;; URL: https://github.com/7696122/dynamic-cursor-color-mode
 ;; Doc URL:
 ;; Keywords: cursor, color, face
 ;; Compatibility: GNU Emacs: 20.x, 21.x, 22.x, 23.x, 24.x
@@ -21,7 +21,7 @@
 ;;
 ;; Quickstart
 ;;
-;;       (require 'dynamic-cursor-color-changer)
+;;       (require 'dynamic-cursor-color-mode)
 ;;       (dynamic-cursor-color-mode-on)
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -75,6 +75,6 @@
               (lambda ()
                 (add-hook 'post-command-hook 'set-dynamic-cursor-color))))
 
-(provide 'dynamic-cursor-color-changer)
+(provide 'dynamic-cursor-color-mode)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; dynamic-cursor-color-changer.el ends here
+;;; dynamic-cursor-color-mode.el ends here
