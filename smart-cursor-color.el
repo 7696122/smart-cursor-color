@@ -7,9 +7,9 @@
 ;; Created: Thu Oct 31 21:33:34 2013 (+0900)
 ;; Version: 0.0.1
 ;; Package-Requires: ()
-;; Last-Updated: Tue Apr 22 23:20:30 2014 (+0900)
+;; Last-Updated: Tue Apr 22 23:25:38 2014 (+0900)
 ;;           By: 7696122
-;;     Update #: 333
+;;     Update #: 336
 ;; URL: https://github.com/7696122/smart-cursor-color
 ;; Doc URL:
 ;; Keywords: cursor, color, face
@@ -52,7 +52,7 @@
 
 (defvar current-cursor-color nil "Current cursor color.")
 
-(defun change-dynamic-cursor-color ()
+(defun smart-cursor-color ()
   "Change cursor color dynamically."
   (let ((picked-color (foreground-color-at-point))
         (foreground-color (face-foreground 'default)))
@@ -64,16 +64,16 @@
         (setq current-cursor-color foreground-color)
         (set-cursor-color foreground-color)))))
 
-(define-minor-mode smart-cursor-color
+(define-minor-mode smart-cursor-color-mode
   "Dynamically changed cursor color at point's color."
   :global t
   :group 'cursor
   (if smart-cursor-color
       (progn
-        (add-hook 'pre-command-hook #'change-dynamic-cursor-color)
-        (add-hook 'post-command-hook #'change-dynamic-cursor-color))
-    (remove-hook 'pre-command-hook #'change-dynamic-cursor-color)
-    (remove-hook 'post-command-hook #'change-dynamic-cursor-color)))
+        (add-hook 'pre-command-hook #'smart-cursor-color)
+        (add-hook 'post-command-hook #'smart-cursor-color))
+    (remove-hook 'pre-command-hook #'smart-cursor-color)
+    (remove-hook 'post-command-hook #'smart-cursor-color)))
 
 (provide 'smart-cursor-color)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
