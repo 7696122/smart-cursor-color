@@ -1,16 +1,16 @@
-;;; dynamic-cursor-color-mode.el --- Change cursor color dynamically.
+;;; smart-cursor-color.el --- Change cursor color dynamically.
 ;;
-;; Filename: dynamic-cursor-color-mode.el
+;; Filename: smart-cursor-color.el
 ;; Description: Change cursor color dynamically at cursor or pointer.
 ;; Author: 7696122
 ;; Maintainer: 7696122
 ;; Created: Thu Oct 31 21:33:34 2013 (+0900)
 ;; Version: 0.0.1
 ;; Package-Requires: ()
-;; Last-Updated: Fri Nov 22 14:46:28 2013 (+0900)
+;; Last-Updated: Tue Apr 22 23:20:30 2014 (+0900)
 ;;           By: 7696122
-;;     Update #: 332
-;; URL: https://github.com/7696122/dynamic-cursor-color-mode
+;;     Update #: 333
+;; URL: https://github.com/7696122/smart-cursor-color
 ;; Doc URL:
 ;; Keywords: cursor, color, face
 ;; Compatibility: GNU Emacs: 20.x, 21.x, 22.x, 23.x, 24.x
@@ -21,8 +21,8 @@
 ;;
 ;; Quickstart
 ;;
-;;       (require 'dynamic-cursor-color-mode)
-;;       (setq dynamic-cursor-color-mode +1)
+;;       (require 'smart-cursor-color)
+;;       (setq smart-cursor-color +1)
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -64,17 +64,17 @@
         (setq current-cursor-color foreground-color)
         (set-cursor-color foreground-color)))))
 
-(define-minor-mode dynamic-cursor-color-mode
+(define-minor-mode smart-cursor-color
   "Dynamically changed cursor color at point's color."
   :global t
   :group 'cursor
-  (if dynamic-cursor-color-mode
+  (if smart-cursor-color
       (progn
         (add-hook 'pre-command-hook #'change-dynamic-cursor-color)
         (add-hook 'post-command-hook #'change-dynamic-cursor-color))
     (remove-hook 'pre-command-hook #'change-dynamic-cursor-color)
     (remove-hook 'post-command-hook #'change-dynamic-cursor-color)))
 
-(provide 'dynamic-cursor-color-mode)
+(provide 'smart-cursor-color)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; dynamic-cursor-color-mode.el ends here
+;;; smart-cursor-color.el ends here
