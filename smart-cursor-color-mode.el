@@ -5,11 +5,11 @@
 ;; Author: 7696122
 ;; Maintainer: 7696122
 ;; Created: Thu Oct 31 21:33:34 2013 (+0900)
-;; Version: 0.0.1
+;; Version: 0.0.2
 ;; Package-Requires: ()
-;; Last-Updated: Tue Apr 22 23:32:16 2014 (+0900)
+;; Last-Updated: Wed Apr 23 21:28:14 2014 (+0900)
 ;;           By: 7696122
-;;     Update #: 337
+;;     Update #: 339
 ;; URL: https://github.com/7696122/smart-cursor-color-mode
 ;; Doc URL:
 ;; Keywords: cursor, color, face
@@ -71,9 +71,7 @@
   :group 'cursor
   (if smart-cursor-color-mode
       (progn
-        (add-hook 'pre-command-hook #'smart-cursor-color)
         (add-hook 'post-command-hook #'smart-cursor-color))
-    (remove-hook 'pre-command-hook #'smart-cursor-color)
     (remove-hook 'post-command-hook #'smart-cursor-color)))
 
 (provide 'smart-cursor-color-mode)
