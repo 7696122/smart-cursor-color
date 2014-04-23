@@ -50,20 +50,21 @@
 ;;
 ;;; Code:
 
-(defvar current-cursor-color nil "Current cursor color.")
+(defvar smart-cursor-color-current-color nil "Current cursor color.")
 
 (defun smart-cursor-color ()
   "Change cursor color dynamically."
   (let ((picked-color (foreground-color-at-point))
         (foreground-color (face-foreground 'default)))
     (if picked-color
-        (unless (eq picked-color current-cursor-color)
-          (setq current-cursor-color picked-color)
-          (set-cursor-color current-cursor-color))
-      (unless (eq foreground-color current-cursor-color)
-        (setq current-cursor-color foreground-color)
+        (unless (eq picked-color smart-cursor-color-current-color)
+          (setq smart-cursor-color-current-color picked-color)
+          (set-cursor-color smart-cursor-color-current-color))
+      (unless (eq foreground-color smart-cursor-color-current-color)
+        (setq smart-cursor-color-current-color foreground-color)
         (set-cursor-color foreground-color)))))
 
+;;;###autoload
 (define-minor-mode smart-cursor-color-mode
   "Dynamically changed cursor color at point's color."
   :global t
