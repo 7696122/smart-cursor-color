@@ -7,9 +7,9 @@
 ;; Created: Thu Oct 31 21:33:34 2013 (+0900)
 ;; Version: 0.0.2
 ;; Package-Requires: ()
-;; Last-Updated: Wed Apr 23 21:28:14 2014 (+0900)
+;; Last-Updated: Thu Apr 24 02:30:43 2014 (+0900)
 ;;           By: 7696122
-;;     Update #: 339
+;;     Update #: 341
 ;; URL: https://github.com/7696122/smart-cursor-color-mode
 ;; Doc URL:
 ;; Keywords: cursor, color, face
@@ -50,18 +50,18 @@
 ;;
 ;;; Code:
 
-(defvar smart-cursor-color-current-color nil "Current cursor color.")
+(defvar sccm--current-color nil "Current cursor color.")
 
-(defun smart-cursor-color ()
+(defun sccm--set-cursor-color ()
   "Change cursor color dynamically."
   (let ((picked-color (foreground-color-at-point))
         (foreground-color (face-foreground 'default)))
     (if picked-color
-        (unless (eq picked-color smart-cursor-color-current-color)
-          (setq smart-cursor-color-current-color picked-color)
-          (set-cursor-color smart-cursor-color-current-color))
-      (unless (eq foreground-color smart-cursor-color-current-color)
-        (setq smart-cursor-color-current-color foreground-color)
+        (unless (eq picked-color sccm--current-color)
+          (setq sccm--current-color picked-color)
+          (set-cursor-color sccm--current-color))
+      (unless (eq foreground-color sccm--current-color)
+        (setq sccm--current-color foreground-color)
         (set-cursor-color foreground-color)))))
 
 ;;;###autoload
@@ -71,8 +71,8 @@
   :group 'cursor
   (if smart-cursor-color-mode
       (progn
-        (add-hook 'post-command-hook #'smart-cursor-color))
-    (remove-hook 'post-command-hook #'smart-cursor-color)))
+        (add-hook 'post-command-hook #'sccm--set-cursor-color))
+    (remove-hook 'post-command-hook #'sccm--set-cursor-color)))
 
 (provide 'smart-cursor-color-mode)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
