@@ -7,9 +7,9 @@
 ;; Created: Thu Oct 31 21:33:34 2013 (+0900)
 ;; Version: 0.0.2
 ;; Package-Requires: ()
-;; Last-Updated: Thu Apr 24 02:30:43 2014 (+0900)
+;; Last-Updated: Thu Apr 24 03:09:35 2014 (+0900)
 ;;           By: 7696122
-;;     Update #: 341
+;;     Update #: 351
 ;; URL: https://github.com/7696122/smart-cursor-color-mode
 ;; Doc URL:
 ;; Keywords: cursor, color, face
@@ -50,19 +50,20 @@
 ;;
 ;;; Code:
 
-(defvar sccm--current-color nil "Current cursor color.")
+(defvar sccm--last-cursor-color nil "Current cursor color.")
+(defvar sccm--default-cursor-color (face-foreground 'cursor)
+  "Default cursor color.")
 
 (defun sccm--set-cursor-color ()
   "Change cursor color dynamically."
-  (let ((picked-color (foreground-color-at-point))
-        (foreground-color (face-foreground 'default)))
+  (let ((picked-color (foreground-color-at-point)))
     (if picked-color
-        (unless (eq picked-color sccm--current-color)
-          (setq sccm--current-color picked-color)
-          (set-cursor-color sccm--current-color))
-      (unless (eq foreground-color sccm--current-color)
-        (setq sccm--current-color foreground-color)
-        (set-cursor-color foreground-color)))))
+        (unless (eq picked-color sccm--last-cursor-color)
+          (setq sccm--last-cursor-color picked-color)
+          (set-cursor-color sccm--last-cursor-color))
+      (unless (eq sccm--default-cursor-color sccm--last-cursor-color)
+        (setq sccm--last-cursor-color sccm--default-cursor-color)
+        (set-cursor-color sccm--default-cursor-color)))))
 
 ;;;###autoload
 (define-minor-mode smart-cursor-color-mode
