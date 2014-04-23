@@ -1,4 +1,4 @@
-;;; smart-cursor-color-mode.el --- Change cursor color dynamically.
+;;; smart-cursor-color-mode.el --- Change cursor color dynamically. -*- lexical-binding: t -*-
 ;;
 ;; Filename: smart-cursor-color-mode.el
 ;; Description: Change cursor color dynamically at cursor or pointer.
@@ -7,9 +7,9 @@
 ;; Created: Thu Oct 31 21:33:34 2013 (+0900)
 ;; Version: 0.0.2
 ;; Package-Requires: ()
-;; Last-Updated: Thu Apr 24 03:09:35 2014 (+0900)
+;; Last-Updated: Thu Apr 24 03:18:13 2014 (+0900)
 ;;           By: 7696122
-;;     Update #: 351
+;;     Update #: 352
 ;; URL: https://github.com/7696122/smart-cursor-color-mode
 ;; Doc URL:
 ;; Keywords: cursor, color, face
