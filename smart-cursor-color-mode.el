@@ -7,9 +7,9 @@
 ;; Created: Thu Oct 31 21:33:34 2013 (+0900)
 ;; Version: 0.0.3
 ;; Package-Requires: ()
-;; Last-Updated: Fri Apr 25 01:46:24 2014 (+0900)
+;; Last-Updated: Fri Apr 25 01:51:45 2014 (+0900)
 ;;           By: 7696122
-;;     Update #: 369
+;;     Update #: 371
 ;; URL: https://github.com/7696122/smart-cursor-color-mode
 ;; Doc URL:
 ;; Keywords: cursor, color, face
@@ -53,7 +53,7 @@
 ;;
 ;;; Code:
 
-(defvar sccm--last-cursor-color nil "Current cursor color.")
+(defvar sccm--last-cursor-color nil "Current cursor color for smart-cursor-color-mode.")
 
 (defvar sccm--default-cursor-color (face-foreground 'default)
   "Default cursor color.")
@@ -75,8 +75,7 @@
 ;;;###autoload
 (define-minor-mode smart-cursor-color-mode
   "Dynamically changed cursor color at point's color."
-  :global t
-  :group 'cursor
+  :global t :group 'cursor
   (if smart-cursor-color-mode
       (progn
         (setq sccm--saved-cursor-color (face-background 'cursor))
