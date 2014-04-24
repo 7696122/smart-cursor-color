@@ -7,9 +7,9 @@
 ;; Created: Thu Oct 31 21:33:34 2013 (+0900)
 ;; Version: 0.0.3
 ;; Package-Requires: ()
-;; Last-Updated: Thu Apr 24 11:03:57 2014 (+0900)
+;; Last-Updated: Thu Apr 24 11:05:51 2014 (+0900)
 ;;           By: 7696122
-;;     Update #: 366
+;;     Update #: 367
 ;; URL: https://github.com/7696122/smart-cursor-color-mode
 ;; Doc URL:
 ;; Keywords: cursor, color, face
@@ -78,8 +78,8 @@
       (progn
         (setq sccm--saved-cursor-color (face-background 'cursor))
         (add-hook 'post-command-hook #'sccm--set-cursor-color))
-    (set-cursor-color sccm--saved-cursor-color)
-    (remove-hook 'post-command-hook #'sccm--set-cursor-color)))
+    (remove-hook 'post-command-hook #'sccm--set-cursor-color)
+    (set-cursor-color sccm--saved-cursor-color)))
 
 (provide 'smart-cursor-color-mode)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
