@@ -7,9 +7,9 @@
 ;; Created: Thu Oct 31 21:33:34 2013 (+0900)
 ;; Version: 0.0.2
 ;; Package-Requires: ()
-;; Last-Updated: Thu Apr 24 10:13:18 2014 (+0900)
+;; Last-Updated: Thu Apr 24 10:58:24 2014 (+0900)
 ;;           By: 7696122
-;;     Update #: 353
+;;     Update #: 364
 ;; URL: https://github.com/7696122/smart-cursor-color-mode
 ;; Doc URL:
 ;; Keywords: cursor, color, face
@@ -53,6 +53,8 @@
 (defvar sccm--last-cursor-color nil "Current cursor color.")
 (defvar sccm--default-cursor-color (face-foreground 'default)
   "Default cursor color.")
+(defvar sccm--saved-cursor-color (face-background 'cursor)
+  "Saved cursor color.")
 
 (defun sccm--set-cursor-color ()
   "Change cursor color dynamically."
@@ -72,7 +74,9 @@
   :group 'cursor
   (if smart-cursor-color-mode
       (progn
+        (setq sccm--saved-cursor-color (face-background 'cursor))
         (add-hook 'post-command-hook #'sccm--set-cursor-color))
+    (set-cursor-color sccm--saved-cursor-color)
     (remove-hook 'post-command-hook #'sccm--set-cursor-color)))
 
 (provide 'smart-cursor-color-mode)
