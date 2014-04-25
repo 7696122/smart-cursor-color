@@ -85,6 +85,18 @@
     (remove-hook 'post-command-hook #'scc--set-cursor-color)
     (set-cursor-color scc--saved-cursor-color)))
 
+;;;###autoload
+(defun turn-on-smart-cursor-color ()
+  "Unconditionally turn on `smart-cursor-color-mode'."
+  (interactive)
+  (smart-cursor-color-mode +1))
+
+;;;###autoload
+(defun turn-off-smart-cursor-color ()
+  "Unconditionally turn off `smart-cursor-color-mode'."
+  (interactive)
+  (smart-cursor-color-mode -1))
+
 (provide 'smart-cursor-color)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; smart-cursor-color.el ends here
