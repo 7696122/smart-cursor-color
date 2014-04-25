@@ -58,7 +58,7 @@
   "Current cursor color for smart-cursor-color-mode.")
 
 (defvar scc--default-cursor-color (face-foreground 'default)
-  "Default cursor color. When picked foreground color is nil, used.")
+  "Default cursor color. When picked foreground color is nil, use this.")
 
 (defvar scc--saved-cursor-color (face-background 'cursor)
   "Saved cursor color. When turn off smart-cursor-color-mode, restore origin cursor color.")
