@@ -55,13 +55,13 @@
 ;;; Code:
 
 (defvar scc--last-cursor-color nil
-  "Current cursor color for smart-cursor-color.")
+  "Current cursor color for smart-cursor-color-mode.")
 
 (defvar scc--default-cursor-color (face-foreground 'default)
-  "Default cursor color.")
+  "Default cursor color. When picked foreground color is nil, used.")
 
 (defvar scc--saved-cursor-color (face-background 'cursor)
-  "Saved cursor color.")
+  "Saved cursor color. When turn off smart-cursor-color-mode, restore origin cursor color.")
 
 (defun scc--set-cursor-color ()
   "Change cursor color dynamically."
