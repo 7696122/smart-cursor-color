@@ -7,9 +7,9 @@
 ;; Created: Thu Oct 31 21:33:34 2013 (+0900)
 ;; Version: 0.0.4
 ;; Package-Requires: ()
-;; Last-Updated: Fri Apr 25 21:56:20 2014 (+0900)
+;; Last-Updated: Fri Apr 25 22:06:31 2014 (+0900)
 ;;           By: 7696122
-;;     Update #: 386
+;;     Update #: 387
 ;; URL: https://github.com/7696122/smart-cursor-color
 ;; Doc URL:
 ;; Keywords: cursor, color, face
@@ -82,7 +82,7 @@
 ;;;###autoload
 (define-minor-mode smart-cursor-color-mode
   "Dynamically changed cursor color at point's color."
-  :global t :group 'cursor :require 'smart-cursor-color
+  :lighter " scc" :global t :group 'cursor :require 'smart-cursor-color
   (if smart-cursor-color-mode
       (progn
         (setq scc--saved-cursor-color (face-background 'cursor))
