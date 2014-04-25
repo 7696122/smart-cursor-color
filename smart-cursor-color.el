@@ -7,13 +7,13 @@
 ;; Created: Thu Oct 31 21:33:34 2013 (+0900)
 ;; Version: 0.0.3
 ;; Package-Requires: ()
-;; Last-Updated: Fri Apr 25 13:30:38 2014 (+0900)
+;; Last-Updated: Fri Apr 25 18:48:14 2014 (+0900)
 ;;           By: 7696122
-;;     Update #: 375
+;;     Update #: 385
 ;; URL: https://github.com/7696122/smart-cursor-color
 ;; Doc URL:
 ;; Keywords: cursor, color, face
-;; Compatibility: GNU Emacs: 20.x, 21.x, 22.x, 23.x, 24.x
+;; Compatibility: GNU Emacs: 24.x
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -24,8 +24,13 @@
 ;; To make the mode enabled every time Emacs starts, add the following
 ;; to Emacs initialisation file (~/.emacs or ~/.emacs.d/init.el):
 ;;
+;; If installed from elpa.
+;;       (smart-cursor-color-mode +1)
+;;
+;; If installed manually,
+;;       (add-to-list 'load-path "path-to-installed-directory")
 ;;       (require 'smart-cursor-color)
-;;       (setq smart-cursor-color-mode +1)
+;;       (smart-cursor-color-mode +1)
 ;;
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
