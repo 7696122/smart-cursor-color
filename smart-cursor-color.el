@@ -1,16 +1,16 @@
-;;; smart-cursor-color-mode.el --- Change cursor color dynamically. -*- lexical-binding: t -*-
+;;; smart-cursor-color.el --- Change cursor color dynamically. -*- lexical-binding: t -*-
 ;;
-;; Filename: smart-cursor-color-mode.el
+;; Filename: smart-cursor-color.el
 ;; Description: Change cursor color dynamically at cursor or pointer.
 ;; Author: 7696122
 ;; Maintainer: 7696122
 ;; Created: Thu Oct 31 21:33:34 2013 (+0900)
 ;; Version: 0.0.3
 ;; Package-Requires: ()
-;; Last-Updated: Fri Apr 25 01:51:45 2014 (+0900)
+;; Last-Updated: Fri Apr 25 13:30:38 2014 (+0900)
 ;;           By: 7696122
-;;     Update #: 371
-;; URL: https://github.com/7696122/smart-cursor-color-mode
+;;     Update #: 375
+;; URL: https://github.com/7696122/smart-cursor-color
 ;; Doc URL:
 ;; Keywords: cursor, color, face
 ;; Compatibility: GNU Emacs: 20.x, 21.x, 22.x, 23.x, 24.x
@@ -24,8 +24,9 @@
 ;; To make the mode enabled every time Emacs starts, add the following
 ;; to Emacs initialisation file (~/.emacs or ~/.emacs.d/init.el):
 ;;
-;;       (require 'smart-cursor-color-mode)
+;;       (require 'smart-cursor-color)
 ;;       (setq smart-cursor-color-mode +1)
+;;
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -53,36 +54,37 @@
 ;;
 ;;; Code:
 
-(defvar sccm--last-cursor-color nil "Current cursor color for smart-cursor-color-mode.")
+(defvar scc--last-cursor-color nil
+  "Current cursor color for smart-cursor-color.")
 
-(defvar sccm--default-cursor-color (face-foreground 'default)
+(defvar scc--default-cursor-color (face-foreground 'default)
   "Default cursor color.")
 
-(defvar sccm--saved-cursor-color (face-background 'cursor)
+(defvar scc--saved-cursor-color (face-background 'cursor)
   "Saved cursor color.")
 
-(defun sccm--set-cursor-color ()
+(defun scc--set-cursor-color ()
   "Change cursor color dynamically."
   (let ((picked-color (foreground-color-at-point)))
     (if picked-color
-        (unless (eq picked-color sccm--last-cursor-color)
-          (setq sccm--last-cursor-color picked-color)
-          (set-cursor-color sccm--last-cursor-color))
-      (unless (eq sccm--default-cursor-color sccm--last-cursor-color)
-        (setq sccm--last-cursor-color sccm--default-cursor-color)
-        (set-cursor-color sccm--default-cursor-color)))))
+        (unless (eq picked-color scc--last-cursor-color)
+          (setq scc--last-cursor-color picked-color)
+          (set-cursor-color scc--last-cursor-color))
+      (unless (eq scc--default-cursor-color scc--last-cursor-color)
+        (setq scc--last-cursor-color scc--default-cursor-color)
+        (set-cursor-color scc--default-cursor-color)))))
 
 ;;;###autoload
 (define-minor-mode smart-cursor-color-mode
   "Dynamically changed cursor color at point's color."
-  :global t :group 'cursor
+  :global t :group 'cursor :require 'smart-cursor-color
   (if smart-cursor-color-mode
       (progn
-        (setq sccm--saved-cursor-color (face-background 'cursor))
-        (add-hook 'post-command-hook #'sccm--set-cursor-color))
-    (remove-hook 'post-command-hook #'sccm--set-cursor-color)
-    (set-cursor-color sccm--saved-cursor-color)))
+        (setq scc--saved-cursor-color (face-background 'cursor))
+        (add-hook 'post-command-hook #'scc--set-cursor-color))
+    (remove-hook 'post-command-hook #'scc--set-cursor-color)
+    (set-cursor-color scc--saved-cursor-color)))
 
-(provide 'smart-cursor-color-mode)
+(provide 'smart-cursor-color)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; smart-cursor-color-mode.el ends here
+;;; smart-cursor-color.el ends here
