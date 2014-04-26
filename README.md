@@ -3,7 +3,7 @@ smart-cursor-color-mode
 
 Change cursor-color dynamically on Emacs.
 
-iTerm.app have `smart cursor color'.
+[iTerm2](http://www.iterm2.com/#/section/home) have `smart cursor color'.
 
 But GNU Emacs deosn't have this option.
 
@@ -16,7 +16,7 @@ To make the mode enabled every time Emacs starts, add the following
 
 to Emacs initialisation file (~/.emacs or ~/.emacs.d/init.el):
 
-If installed from elpa.
+If installed from [melpa](http://melpa.milkbox.net).
 
     (smart-cursor-color-mode +1)
 
