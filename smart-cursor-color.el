@@ -7,9 +7,9 @@
 ;; Created: Thu Oct 31 21:33:34 2013 (+0900)
 ;; Version: 0.0.4
 ;; Package-Requires: ()
-;; Last-Updated: Sat Apr 26 17:33:08 2014 (+0900)
+;; Last-Updated: Sat Apr 26 17:42:34 2014 (+0900)
 ;;           By: 7696122
-;;     Update #: 393
+;;     Update #: 394
 ;; URL: https://github.com/7696122/smart-cursor-color
 ;; Doc URL:
 ;; Keywords: cursor, color, face
@@ -89,7 +89,8 @@
         (setq scc--saved-cursor-color (frame-parameter nil 'cursor-color))
         (add-hook 'post-command-hook #'scc--set-cursor-color))
     (remove-hook 'post-command-hook #'scc--set-cursor-color)
-    (set-cursor-color scc--saved-cursor-color)))
+    (unless (equal (frame-parameter nil 'cursor-color) scc--saved-cursor-color)
+      (set-cursor-color scc--saved-cursor-color))))
 
 ;;;###autoload
 (defun turn-on-smart-cursor-color ()
