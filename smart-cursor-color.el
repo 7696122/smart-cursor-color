@@ -1,4 +1,4 @@
-;;; smart-cursor-color.el --- Change cursor color dynamically. -*- lexical-binding: t -*-
+;;; smart-cursor-color.el --- Change cursor color dynamically
 ;;
 ;; Filename: smart-cursor-color.el
 ;; Description: Change cursor color dynamically at cursor or pointer.
