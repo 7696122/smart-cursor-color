@@ -8,13 +8,13 @@ The `smart-cursor-color-mode' can make do that.
 To make the mode enabled every time Emacs starts, add the following
 to Emacs initialisation file (~/.emacs or ~/.emacs.d/init.el):
 
-If installed from [[http://melpa.milkbox.net/#/][MELPA]]
+- If installed from [[http://melpa.milkbox.net/#/][MELPA]]
 
 #+BEGIN_SRC emacs-lisp
   (smart-cursor-color-mode +1)
 #+END_SRC
 
-If installed manually,
+- If installed manually,
 #+BEGIN_SRC emacs-lisp
   (add-to-list 'load-path "path-to-installed-directory")
   (require 'smart-cursor-color)
