@@ -7,9 +7,9 @@
 ;; Created: Thu Oct 31 21:33:34 2013 (+0900)
 ;; Version: 0.0.4
 ;; Package-Requires: ()
-;; Last-Updated: Fri Apr 25 22:30:58 2014 (+0900)
+;; Last-Updated: Sat Apr 26 17:33:08 2014 (+0900)
 ;;           By: 7696122
-;;     Update #: 388
+;;     Update #: 393
 ;; URL: https://github.com/7696122/smart-cursor-color
 ;; Doc URL:
 ;; Keywords: cursor, color, face
@@ -62,10 +62,10 @@
 (defvar scc--last-cursor-color nil
   "Current cursor color for smart-cursor-color-mode.")
 
-(defvar scc--default-cursor-color (face-foreground 'default)
+(defvar scc--default-cursor-color nil
   "Default cursor color. When picked foreground color is nil, use this.")
 
-(defvar scc--saved-cursor-color (face-background 'cursor)
+(defvar scc--saved-cursor-color nil
   "Saved cursor color. When turn off smart-cursor-color-mode, restore origin cursor color.")
 
 (defun scc--set-cursor-color ()
@@ -85,7 +85,8 @@
   :lighter " scc" :global t :group 'cursor :require 'smart-cursor-color
   (if smart-cursor-color-mode
       (progn
-        (setq scc--saved-cursor-color (face-background 'cursor))
+        (setq scc--default-cursor-color (frame-parameter nil 'foreground-color))
+        (setq scc--saved-cursor-color (frame-parameter nil 'cursor-color))
         (add-hook 'post-command-hook #'scc--set-cursor-color))
     (remove-hook 'post-command-hook #'scc--set-cursor-color)
     (set-cursor-color scc--saved-cursor-color)))
