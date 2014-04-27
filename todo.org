@@ -1,0 +1,2 @@
+* TODO Fix stopped moving cursor problem when run command next-line.
+* TODO Make eanble when highlight line mode is on.
