@@ -7,9 +7,9 @@
 ;; Created: Thu Oct 31 21:33:34 2013 (+0900)
 ;; Version: 0.0.4
 ;; Package-Requires: ()
-;; Last-Updated: Sun Apr 27 18:34:16 2014 (+0900)
+;; Last-Updated: Sun Apr 27 18:37:44 2014 (+0900)
 ;;           By: 7696122
-;;     Update #: 400
+;;     Update #: 401
 ;; URL: https://github.com/7696122/smart-cursor-color
 ;; Doc URL:
 ;; Keywords: cursor, color, face
@@ -35,8 +35,8 @@
 ;; When hl-line-mode is on,
 ;; smart-cursor-color-mode is not work.
 ;; So must turn off hl-line-mode.
-;; (global-hl-line-mode -1)
-;; (hl-line-mode -1)
+;;       (global-hl-line-mode -1)
+;;       (hl-line-mode -1)
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
