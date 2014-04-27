@@ -7,9 +7,9 @@
 ;; Created: Thu Oct 31 21:33:34 2013 (+0900)
 ;; Version: 0.0.4
 ;; Package-Requires: ()
-;; Last-Updated: Sun Apr 27 01:36:01 2014 (+0900)
+;; Last-Updated: Sun Apr 27 18:34:16 2014 (+0900)
 ;;           By: 7696122
-;;     Update #: 397
+;;     Update #: 400
 ;; URL: https://github.com/7696122/smart-cursor-color
 ;; Doc URL:
 ;; Keywords: cursor, color, face
@@ -68,10 +68,10 @@
   "Current cursor color for smart-cursor-color-mode.")
 
 (defvar scc--default-cursor-color nil
-  "Default cursor color. When picked foreground color is nil, use this.")
+  "Default cursor color.  When picked foreground color is nil, use this.")
 
 (defvar scc--saved-cursor-color nil
-  "Saved cursor color. When turn off smart-cursor-color-mode, restore origin cursor color.")
+  "Saved cursor color.  When turn off smart-cursor-color-mode, restore origin cursor color.")
 
 (defun scc--set-cursor-color ()
   "Change cursor color dynamically."
