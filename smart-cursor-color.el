@@ -7,11 +7,11 @@
 ;; Created: Thu Oct 31 21:33:34 2013 (+0900)
 ;; Version: 0.0.4
 ;; Package-Requires: ()
-;; Last-Updated: Sun Apr 27 18:37:44 2014 (+0900)
+;; Last-Updated: Mon Apr 28 01:50:39 2014 (+0900)
 ;;           By: 7696122
-;;     Update #: 401
-;; URL: https://github.com/7696122/smart-cursor-color
-;; Doc URL:
+;;     Update #: 402
+;; URL: https://github.com/7696122/smart-cursor-color/
+;; Doc URL: http://7696122.github.io/smart-cursor-color/
 ;; Keywords: cursor, color, face
 ;; Compatibility: GNU Emacs: 24.x
 ;;
