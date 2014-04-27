@@ -1,2 +1,3 @@
+* Todos [0/2]
 - [ ] Fix stopped moving cursor problem when run command next-line.
 - [ ] Make eanble when highlight line mode is on.
