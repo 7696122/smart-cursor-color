@@ -7,9 +7,9 @@
 ;; Created: Thu Oct 31 21:33:34 2013 (+0900)
 ;; Version: 0.0.4
 ;; Package-Requires: ()
-;; Last-Updated: Mon Apr 28 01:50:39 2014 (+0900)
+;; Last-Updated: Tue Apr 29 22:35:48 2014 (+0900)
 ;;           By: 7696122
-;;     Update #: 402
+;;     Update #: 403
 ;; URL: https://github.com/7696122/smart-cursor-color/
 ;; Doc URL: http://7696122.github.io/smart-cursor-color/
 ;; Keywords: cursor, color, face
@@ -92,8 +92,8 @@
       (progn
         (setq scc--default-cursor-color (frame-parameter nil 'foreground-color))
         (setq scc--saved-cursor-color (frame-parameter nil 'cursor-color))
-        (add-hook 'post-command-hook #'scc--set-cursor-color))
-    (remove-hook 'post-command-hook #'scc--set-cursor-color)
+        (add-hook 'post-command-hook 'scc--set-cursor-color))
+    (remove-hook 'post-command-hook 'scc--set-cursor-color)
     (unless (equal (frame-parameter nil 'cursor-color) scc--saved-cursor-color)
       (set-cursor-color scc--saved-cursor-color))))
 
