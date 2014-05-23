@@ -26,8 +26,7 @@ smart-cursor-color-mode is not work.
 So must turn off hl-line-mode.
 
 #+BEGIN_SRC emacs-lisp
-(global-hl-line-mode -1)
-(hl-line-mode -1)
+  (hl-line-mode -1)
 #+END_SRC
 
 But when global-hl-line-mode is on,
