@@ -5,7 +5,7 @@
 ;; Author: 7696122
 ;; Maintainer: 7696122
 ;; Created: Thu Oct 31 21:33:34 2013 (+0900)
-;; Version: 0.0.4
+;; Version: 0.0.5
 ;; Package-Requires: ()
 ;; Last-Updated: Tue Apr 29 22:35:48 2014 (+0900)
 ;;           By: 7696122
@@ -35,8 +35,12 @@
 ;; When hl-line-mode is on,
 ;; smart-cursor-color-mode is not work.
 ;; So must turn off hl-line-mode.
-;;       (global-hl-line-mode -1)
 ;;       (hl-line-mode -1)
+;; 
+;; But when global-hl-line-mode is on,
+;; smart-cursor-color-mode is work.
+;;       (global-hl-line-mode +1)
+;;       (smart-cursor-color-mode +1)
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
