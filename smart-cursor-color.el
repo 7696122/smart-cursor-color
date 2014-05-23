@@ -5,7 +5,7 @@
 ;; Author: 7696122
 ;; Maintainer: 7696122
 ;; Created: Thu Oct 31 21:33:34 2013 (+0900)
-;; Version: 0.0.5
+;; Version: 0.0.6
 ;; Package-Requires: ()
 ;; Last-Updated: Tue Apr 29 22:35:48 2014 (+0900)
 ;;           By: 7696122
@@ -87,6 +87,16 @@
       (unless (eq scc--default-cursor-color scc--last-cursor-color)
         (setq scc--last-cursor-color scc--default-cursor-color)
         (set-cursor-color scc--default-cursor-color)))))
+
+(defun scc--fix-global-hl-line-mode ()
+  "for global-hl-line-mode."
+  (if (and global-hl-line-mode
+	   smart-cursor-color-mode)
+      (progn
+	(smart-cursor-color-mode -1)
+	(smart-cursor-color-mode +1))))
+
+(add-hook 'global-hl-line-mode-hook 'scc--fix-global-hl-line-mode)
 
 ;;;###autoload
 (define-minor-mode smart-cursor-color-mode
