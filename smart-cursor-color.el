@@ -77,16 +77,25 @@
 (defvar scc--saved-cursor-color nil
   "Saved cursor color.  When turn off smart-cursor-color-mode, restore origin cursor color.")
 
+(defgroup smart-cursor-color nil
+  ""
+  :group 'cursor)
+
+(defcustom scc--ignore-modes '(org-agenda-mode)
+  ""
+  :group 'smart-cursor-color)
+
 (defun scc--set-cursor-color ()
   "Change cursor color dynamically."
-  (let ((picked-color (foreground-color-at-point)))
-    (if picked-color
-        (unless (eq picked-color scc--last-cursor-color)
-          (setq scc--last-cursor-color picked-color)
-          (set-cursor-color scc--last-cursor-color))
-      (unless (eq scc--default-cursor-color scc--last-cursor-color)
-        (setq scc--last-cursor-color scc--default-cursor-color)
-        (set-cursor-color scc--default-cursor-color)))))
+  (unless (member major-mode scc--ignore-modes)
+    (let ((picked-color (foreground-color-at-point)))
+      (if picked-color
+	  (unless (eq picked-color scc--last-cursor-color)
+	    (setq scc--last-cursor-color picked-color)
+	    (set-cursor-color scc--last-cursor-color))
+	(unless (eq scc--default-cursor-color scc--last-cursor-color)
+	  (setq scc--last-cursor-color scc--default-cursor-color)
+	  (set-cursor-color scc--default-cursor-color))))))
 
 (defun scc--fix-global-hl-line-mode ()
   "for global-hl-line-mode."
@@ -96,18 +105,25 @@
 	(smart-cursor-color-mode -1)
 	(smart-cursor-color-mode +1))))
 
+;; (defun scc--reset-cursor-color ()
+;;   ""
+;;   (set-cursor-color scc--default-cursor-color))
+
 (add-hook 'global-hl-line-mode-hook 'scc--fix-global-hl-line-mode)
 
 ;;;###autoload
 (define-minor-mode smart-cursor-color-mode
   "Dynamically changed cursor color at point's color."
-  :lighter " scc" :global t :group 'cursor :require 'smart-cursor-color
+  :lighter " scc" :global t :group 'smart-cursor-color :require 'smart-cursor-color
   (if smart-cursor-color-mode
       (progn
         (setq scc--default-cursor-color (frame-parameter nil 'foreground-color))
         (setq scc--saved-cursor-color (frame-parameter nil 'cursor-color))
-        (add-hook 'post-command-hook 'scc--set-cursor-color))
+        (add-hook 'post-command-hook 'scc--set-cursor-color)
+	;; (add-hook 'buffer-list-update-hook 'scc--reset-cursor-color)
+	)
     (remove-hook 'post-command-hook 'scc--set-cursor-color)
+    ;; (remove-hook 'buffer-list-update-hook 'scc--reset-cursor-color)
     (unless (equal (frame-parameter nil 'cursor-color) scc--saved-cursor-color)
       (set-cursor-color scc--saved-cursor-color))))
 
