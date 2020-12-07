@@ -36,7 +36,7 @@
 ;; smart-cursor-color-mode is not work.
 ;; So must turn off hl-line-mode.
 ;;       (hl-line-mode -1)
-;; 
+;;
 ;; But when global-hl-line-mode is on,
 ;; smart-cursor-color-mode is work.
 ;;       (global-hl-line-mode 1)
@@ -90,20 +90,20 @@
   (unless (member major-mode scc--ignore-modes)
     (let ((picked-color (foreground-color-at-point)))
       (if picked-color
-	  (unless (eq picked-color scc--last-cursor-color)
-	    (setq scc--last-cursor-color picked-color)
-	    (set-cursor-color scc--last-cursor-color))
-	(unless (eq scc--default-cursor-color scc--last-cursor-color)
-	  (setq scc--last-cursor-color scc--default-cursor-color)
-	  (set-cursor-color scc--default-cursor-color))))))
+          (unless (eq picked-color scc--last-cursor-color)
+            (setq scc--last-cursor-color picked-color)
+            (set-cursor-color scc--last-cursor-color))
+        (unless (eq scc--default-cursor-color scc--last-cursor-color)
+          (setq scc--last-cursor-color scc--default-cursor-color)
+          (set-cursor-color scc--default-cursor-color))))))
 
 (defun scc--fix-global-hl-line-mode ()
   "for global-hl-line-mode."
   (if (and global-hl-line-mode
-	   smart-cursor-color-mode)
+           smart-cursor-color-mode)
       (progn
-	(smart-cursor-color-mode -1)
-	(smart-cursor-color-mode +1))))
+        (smart-cursor-color-mode -1)
+        (smart-cursor-color-mode +1))))
 
 ;; (defun scc--reset-cursor-color ()
 ;;   ""
@@ -120,8 +120,8 @@
         (setq scc--default-cursor-color (frame-parameter nil 'foreground-color))
         (setq scc--saved-cursor-color (frame-parameter nil 'cursor-color))
         (add-hook 'post-command-hook 'scc--set-cursor-color)
-	;; (add-hook 'buffer-list-update-hook 'scc--reset-cursor-color)
-	)
+        ;; (add-hook 'buffer-list-update-hook 'scc--reset-cursor-color)
+        )
     (remove-hook 'post-command-hook 'scc--set-cursor-color)
     ;; (remove-hook 'buffer-list-update-hook 'scc--reset-cursor-color)
     (unless (equal (frame-parameter nil 'cursor-color) scc--saved-cursor-color)
